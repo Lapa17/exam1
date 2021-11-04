@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Button from './components/Button';
 
-function App() {
+
+
+
+const App = () => {
+  let [number,setNumber] = useState(0)
+
+  const onIncClcikHandler = () =>{
+    number++;
+    setNumber(number)
+  }
+  const onResetHandler = () => {
+    setNumber(0)
+  }
+
+  const incDisabled = number < 5? false : true
+  const restDisabled = number > 0? false: true
+  const divCounter= incDisabled? 'red counter': 'counter'
+  
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={'wrapper'}>
+      <div className={divCounter}>{number}</div>
+      <div className={'btnWrapper'}>
+        <Button onClick={onIncClcikHandler} name={'inc'} disabled={incDisabled}/>
+        <Button onClick={onResetHandler} name={'reset'} disabled={restDisabled}/>
+        
+      </div>
     </div>
   );
 }
