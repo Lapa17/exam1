@@ -4,7 +4,7 @@ import s from '../components/Button.module.css'
 type ButtonPropsType ={
     onClick:() => void
     name: string
-    disabled?: boolean
+    disabled: boolean
 }
 
 const Button = (props:ButtonPropsType) => {
