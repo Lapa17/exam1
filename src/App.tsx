@@ -10,40 +10,27 @@ const App = () => {
   let [maxValue, setMaxValue] = useState(0)
   let [startValue, setStartValue] = useState(0)
 
-  let mxValue = maxValue
-  let mxValueAsStr = localStorage.getItem('maxValue')
-  if (mxValueAsStr) {
-     mxValue = JSON.parse(mxValueAsStr)
-  }
-
-  let beginValue = startValue
-  let beginValueAsStr = localStorage.getItem('startValue')
-  if (beginValueAsStr) {
-    beginValue = JSON.parse(beginValueAsStr)
-  }
-
-
-  useEffect(() => {
-    localStorage.setItem('counterValue', JSON.stringify(number))
-  }, [number])
-
-  useEffect(() => {
-    setNumber(startValue)
-  }, [beginValue])
+  useEffect(()=>{
+    let startValueAsStr = localStorage.getItem('startValue')
+    if (startValueAsStr){
+      let newStartValue = JSON.parse(startValueAsStr)
+      setNumber(newStartValue)
+    }
+  },[])
 
 
   const onIncClcikHandler = () => setNumber(number+1)
-  const onResetHandler = () => setNumber(beginValue)
+  const onResetHandler = () => setNumber(startValue)
   const onSetHandler = () => {
     localStorage.setItem('maxValue', JSON.stringify(maxValue))
     localStorage.setItem('startValue', JSON.stringify(startValue))
-    setNumber(beginValue)
+    setNumber(startValue)
   }
 
   
 
-  const incDisabled = number < mxValue ? false : true
-  const restDisabled = number > beginValue ? false : true
+  const incDisabled = number < maxValue ? false : true
+  const restDisabled = number > startValue ? false : true
   const divCounter = incDisabled ? 'red counter' : 'counter'
 
   let onChangeMaxValueHandler = (e:ChangeEvent<HTMLInputElement>) => {
