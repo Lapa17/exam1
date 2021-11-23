@@ -24,7 +24,11 @@
   color: #dc0043;
   font-size: 42px;
 }
-
+.redInput {
+  border: 2px solid red;
+    background: #f2a5a5;
+    text-align: center;
+}
 .btnWrapper{
   display: grid;
     grid-template-columns: 1fr 1fr;
