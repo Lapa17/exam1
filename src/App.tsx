@@ -46,12 +46,12 @@ const App = () => {
   const incDisabled = number < maxValue && editMode === false ? false : true
   const restDisabled = number > startValue && editMode === false ? false : true
   const divCounter = incDisabled ? 'red counter' : 'counter'
-  const spanClass = setDisabled ? 'red counter' : 'counter'
+  const spanClass = setDisabled ? 'red message' : 'message'
   const inputMaxValueClass = maxValue <= startValue ? 'redInput input' : 'input'
   const inputStartValueClass = startValue < 0 || startValue >= maxValue ? 'redInput input' : 'input'
 
 
-  const spanTitle = setDisabled ? 'Warning' : 'Some text'
+  const spanTitle = setDisabled ? 'invalid value!' : "enter value and press 'set'"
 
 
   let onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +65,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className={'mainWrapper'}>
       <div className={'wrapper'}>
         {editMode ?
           <span className={spanClass}>{spanTitle}</span>
@@ -78,11 +78,17 @@ const App = () => {
         </div>
       </div>
       <div className={'wrapper'}>
-        <span>Max value</span>
-        <Input value={maxValue} changeHandler={onChangeMaxValueHandler} InputClass={inputMaxValueClass} />
-        <span>start value</span>
-        <Input value={startValue} changeHandler={onChangeStartValueHandler} InputClass={inputStartValueClass} />
-        <div className={'btnWrapper'}>
+        <div className={'wrapperBorder'}>
+          <div className={'itemWrapper'}>
+            <span>max value:</span>
+            <Input value={maxValue} changeHandler={onChangeMaxValueHandler} InputClass={inputMaxValueClass} />
+          </div>
+          <div className={'itemWrapper'}>
+            <span>start value:</span>
+            <Input value={startValue} changeHandler={onChangeStartValueHandler} InputClass={inputStartValueClass} />
+          </div>
+        </div>
+        <div className={'btnWrapper set'}>
           <Button onClick={onSetHandler} name={'set'} disabled={setDisabled} />
 
         </div>

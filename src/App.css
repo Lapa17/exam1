@@ -1,7 +1,10 @@
-
+body{
+  height: 82vh;
+    background: #292c34;
+}
 
 .wrapper{
-  width: 200px;
+  width: 280px;
   border: 3px solid #6de5fa;
   margin: 5% auto 0px;
   border-radius: 5px;
@@ -10,7 +13,7 @@
 }
 
 .counter{
-  height: 70px;
+  height: 90px;
     margin: 10px;
     display: grid;
     align-items: center;
@@ -18,17 +21,14 @@
     font-size: 35px;
     background: #6de5fa;
     border-radius: 5px;
+    border: 2px solid #6de5fa;;
 }
 
 .red {
   color: #dc0043;
   font-size: 42px;
 }
-.redInput {
-  border: 2px solid red;
-    background: #f2a5a5;
-    text-align: center;
-}
+
 .btnWrapper{
   display: grid;
     grid-template-columns: 1fr 1fr;
@@ -40,4 +40,66 @@
     margin: 10px;
     padding: 10px;
 
+}
+
+.set{
+  grid-template-columns: 1fr;
+}
+
+
+.mainWrapper{
+  display: grid;
+  width: 600px;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  margin: 10% auto;
+}
+.wrapperBorder{
+  height: 90px;
+    border: 2px solid #6de5fa;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.itemWrapper{
+  margin-top: 12px;
+  text-align: center;
+}
+
+.itemWrapper>span {
+  min-width: 100px;
+    display: inline-block;
+    color: #6de5fa;
+    font-size: 16px;
+}
+.itemWrapper>input.redInput {
+  border: 2px solid red;
+    background: #f2a5a5;
+}
+.itemWrapper>input{
+  width: 130px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  border: 2px solid #6de5fa;;
+}
+
+.itemWrapper>input:focus-visible{
+  outline-offset: 0;
+}
+
+.message{
+  height: 90px;
+    margin: 10px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 20px;
+    color: #6de5fa;
+    border-radius: 5px;
+    border: 2px solid #6de5fa;
+}
+
+.message.red{
+  color: #dc0043;
 }
