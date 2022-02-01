@@ -3,7 +3,6 @@ import {memoryReducer} from "./memory-reducer";
 
 const reducers = combineReducers({
     memory: memoryReducer,
-
 })
 
 const store = createStore(reducers)
