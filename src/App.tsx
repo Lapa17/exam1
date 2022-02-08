@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Dispatch, useState} from 'react';
+import React, {ChangeEvent, Dispatch, useEffect, useState} from 'react';
 import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
@@ -18,10 +18,36 @@ const App = () => {
     const [editMode, setEditMode] = useState<boolean>(false)
 
 
-    const onIncClickHandler = () => dispatch(setCounterValue(counterValue + 1))
+    useEffect(() => {
+    let startValueAsStr = localStorage.getItem('startValue')
+    if (startValueAsStr) {
+      let newStartValue = JSON.parse(startValueAsStr)
+      dispatch(setStartValue(newStartValue))
+    }
+    let maxValueAsStr = localStorage.getItem('maxValue')
+    if (maxValueAsStr) {
+      let newMaxValue = JSON.parse(maxValueAsStr)
+      dispatch(setMaxValue(newMaxValue))
+    }
+    let counterValueAsStr = localStorage.getItem('counterValue')
+    if (counterValueAsStr) {
+      let newCounterValueAsStr = JSON.parse(counterValueAsStr)
+      dispatch(setCounterValue(newCounterValueAsStr))
+    }
+  
+  }, [])
+  
+
+    const onIncClickHandler = () => {
+      dispatch(setCounterValue(counterValue + 1))
+      localStorage.setItem('counterValue', JSON.stringify(counterValue + 1))
+    }
     const onResetHandler = () => dispatch(setCounterValue(startValue))
     const onSetHandler = () => {
         dispatch(setCounterValue(startValue))
+        localStorage.setItem('maxValue', JSON.stringify(maxValue))
+        localStorage.setItem('startValue', JSON.stringify(startValue))
+        localStorage.setItem('counterValue', JSON.stringify(startValue))
         setEditMode(false)
     }
 
